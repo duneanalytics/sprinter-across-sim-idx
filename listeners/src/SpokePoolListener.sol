@@ -18,13 +18,13 @@ contract SpokePoolListener is SpokePool$OnFilledRelayEvent, SpokePool$OnFundsDep
     {
         address inputToken = LibBytes.lsbToAddress(params.inputToken);
         address outputToken = LibBytes.lsbToAddress(params.outputToken);
-        (string memory inputTokenSymbol, string memory inputTokenName, uint8 inputTokenDecimals) = inputToken
+        (, string memory inputTokenSymbol, uint8 inputTokenDecimals) = inputToken
             == address(0)
-            ? (nativeToken[block.chainid].symbol, nativeToken[block.chainid].name, nativeToken[block.chainid].decimals)
+            ? (nativeToken[block.chainid].name, nativeToken[block.chainid].symbol, nativeToken[block.chainid].decimals)
             : getMetadata(inputToken);
-        (string memory outputTokenSymbol, string memory outputTokenName, uint8 outputTokenDecimals) = outputToken
+        (, string memory outputTokenSymbol, uint8 outputTokenDecimals) = outputToken
             == address(0)
-            ? (nativeToken[block.chainid].symbol, nativeToken[block.chainid].name, nativeToken[block.chainid].decimals)
+            ? (nativeToken[block.chainid].name, nativeToken[block.chainid].symbol, nativeToken[block.chainid].decimals)
             : getMetadata(outputToken);
 
         emit FilledRelay(
@@ -64,13 +64,13 @@ contract SpokePoolListener is SpokePool$OnFilledRelayEvent, SpokePool$OnFundsDep
     {
         address inputToken = LibBytes.lsbToAddress(params.inputToken);
         address outputToken = LibBytes.lsbToAddress(params.outputToken);
-        (string memory inputTokenSymbol, string memory inputTokenName, uint8 inputTokenDecimals) = inputToken
+        (, string memory inputTokenSymbol, uint8 inputTokenDecimals) = inputToken
             == address(0)
-            ? (nativeToken[block.chainid].symbol, nativeToken[block.chainid].name, nativeToken[block.chainid].decimals)
+            ? (nativeToken[block.chainid].name, nativeToken[block.chainid].symbol, nativeToken[block.chainid].decimals)
             : getMetadata(inputToken);
-        (string memory outputTokenSymbol, string memory outputTokenName, uint8 outputTokenDecimals) = outputToken
+        (, string memory outputTokenSymbol, uint8 outputTokenDecimals) = outputToken
             == address(0)
-            ? (nativeToken[block.chainid].symbol, nativeToken[block.chainid].name, nativeToken[block.chainid].decimals)
+            ? (nativeToken[block.chainid].name, nativeToken[block.chainid].symbol, nativeToken[block.chainid].decimals)
             : getMetadata(outputToken);
 
         emit FundsDeposited(
